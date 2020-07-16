@@ -1,0 +1,42 @@
+/**app.wxss**/
+page{
+  background-color: #f7f7f7;
+  height: 100%;
+  font-size: 16px;
+  line-height: 1.6;
+  display: flex;
+  justify-content: center;
+}
+page>view {
+  width: 100vw;
+  max-width: 600px;
+}
+.container{
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  font-size: 16px;
+  font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+}
+.page-body{
+  width: 100%;
+  flex-grow: 1;
+}
+.page-body-info-row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #fff;
+  width: 100%;
+}
+.page-section{
+  width: 100%;
+  margin-bottom: 10px;
+}
+.page-section:last-child{
+  margin-bottom: 0;
+}
+.page-section-spacing{
+  box-sizing: border-box;
+  padding: 20rpx 30rpx;
+}
