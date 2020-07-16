@@ -1,0 +1,39 @@
+<!--miniprogram/pages/mine/mine.wxml-->
+<view class="container">
+	<view class="page-body">
+		<!--用户信息-->
+		<view class="page-section">
+			<view class="page-body-info-row" bindtap="loadInfo">
+				<block wx:if="{{hasUserInfo == false}}">
+					<image class="userinfo-avatar" src="../../images/default_avatar.jpg"></image>
+					<button type="primary" open-type="getUserInfo" bindgetuserinfo="getUserInfo">授权登录</button>
+				</block>
+				<block wx:if="{{hasUserInfo == true}}">
+					<image class="userinfo-avatar" src="{{userInfo.avatarUrl}}"></image>
+					<view class="userinfo">
+						<view class="userinfo-NickName">
+							<open-data type="userNickName"></open-data>
+						</view>
+						<view class="userinfo-otherinfo">
+							<open-data type="userCity" lang="zh_CN"></open-data>
+							<text>|</text>
+							<open-data type="userGender" lang="zh_CN"></open-data>
+						</view>
+					</view>
+				</block>
+			</view>
+		</view>
+		<view class="page-section">
+			<view style="background-color: #fff;width: 100%">
+				<navigator class="navigator" url="/pages/mine/mine-issue/mine-issue">
+					<view class="navigator-text">我发布的</view>
+					<view class="navigator-arrow"></view>
+				</navigator>
+				<navigator class="navigator">
+					<view class="navigator-text">关于</view>
+					<view class="navigator-arrow"></view>
+				</navigator>
+			</view>
+		</view>
+	</view>
+</view>

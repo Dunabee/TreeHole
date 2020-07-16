@@ -1,0 +1,43 @@
+/* miniprogram/pages/mine/mine.wxss */
+.userinfo-avatar{
+  border-radius: 80px;
+  width: 80px;
+  height: 80px;
+  margin: 15rpx;
+}
+.userinfo{
+ padding-left:50px;
+}
+.userinfo-NickName{
+  font-size: 20px;
+}
+.page-section-info-row{
+  padding: 15px 0 25px 0;
+}
+.navigator{
+  padding: 10px 15px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.navigator-text{
+  flex: 1;
+}
+.navigator-arrow{
+  padding-right: 13px;
+  position: relative;
+}
+.navigator-arrow:after {
+  content: " ";
+  display: inline-block;
+  height: 9px;
+  width: 9px;
+  border-width: 1px 1px 0 0;
+  border-color: rgba(0, 0, 0, .3);
+  border-style: solid;
+  transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+  position: absolute;
+  top: 50%;
+  margin-top: -4px;
+  right: 14px;
+}
