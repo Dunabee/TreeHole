@@ -1,0 +1,8 @@
+<!--miniprogram/pages/index/index.wxml-->
+<view class="container">
+	<view class="page-body">
+		<view class="page-section">
+			<picture-card></picture-card>
+		</view>
+	</view>
+</view>
