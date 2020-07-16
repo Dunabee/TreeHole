@@ -1,0 +1,12 @@
+<!--miniprogram/pages/issue/issue.wxml-->
+<view class="container">
+		<view class="page-section page-section-spacing">
+			<textarea class="textarea" placeholder="请输入..."></textarea>
+		</view>
+		<view class="page-section">
+			<uploader></uploader>
+		</view>
+		<view class="page-section">
+			<button>发布</button>
+		</view>
+</view>
