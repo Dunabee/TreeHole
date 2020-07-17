@@ -1,0 +1,40 @@
+/* components/picture-card/picture-card.wxss */
+.block{
+  display: block;
+}
+.center{
+  text-align: center;
+}
+.m-t-sm{
+  margin-top: 15rpx;
+}
+.article-list-author, .article-list-time{
+  font-size: 30rpx;
+  line-height: 30rpx;
+  color: #98a6ad;
+}
+.arcitle-list-img{
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  max-width: 100%;
+  width: 100%;
+  overflow: hidden;
+  margin: 20rpx 0;
+}
+.article-list-img::before {
+  content: " ";
+  display: block;
+  background-color: #f7f7f7;
+  padding-bottom: 60%;
+}
+.article-list-img image {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  width: 100%;
+}
+.article-list-issue{
+  margin-bottom: 20rpx;
+}

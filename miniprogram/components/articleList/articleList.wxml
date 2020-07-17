@@ -1,0 +1,11 @@
+<!--components/picture-card/picture-card.wxml-->
+<view wx:for="{{articleList}}" wx:key="index">
+	<navigator url="" class="block m-t-sm center" style="background:#fff">
+		<text class="article-list-author block">{{item.author}}</text>
+		<view wx:if="{{item.pic_url}}" class="arcitle-list-img">
+			<image src="{{item.pic_url}}"></image>
+		</view>
+		<text class="article-list-issue block">{{item.issue}}</text>
+		<text class="article-list-time block">{{item.postdate}}</text>
+	</navigator>
+</view>
