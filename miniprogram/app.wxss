@@ -40,3 +40,29 @@ page>view {
   box-sizing: border-box;
   padding: 20rpx 30rpx;
 }
+
+/*margin*/
+.m-t{
+  margin-top: 25rpx;
+}
+.m-t-sm{
+  margin-top: 15rpx;
+}
+.m-l{
+  margin-left: 25rpx;
+}
+.m-l-sm{
+  margin-left: 15rpx;
+}
+.m-b{
+  margin-bottom: 25rpx;
+}
+.m-b-sm{
+  margin-bottom: 15rpx;
+}
+.m-r{
+  margin-right: 25rpx;
+}
+.m-r-sm{
+  margin-right: 15rpx;
+}
