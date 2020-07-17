@@ -1,5 +1,5 @@
 {
   "usingComponents": {
-    "picture-card":"../../components/picture-card/picture-card"
+    "article-list":"../../components/articleList/articleList"
   }
 }
