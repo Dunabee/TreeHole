@@ -1,4 +1,6 @@
 // miniprogram/pages/mine/mine.js
+var app = getApp();
+
 Page({
 
   /**
@@ -7,23 +9,25 @@ Page({
   data: {
     hasUserInfo: false
   },
-  
+
   getUserInfo(e) {
-    var that = this
-    var openid
+    console.log(e.detail.userInfo)
+    app.globalData.userInfo = e.detail.userInfo
+    this.setData({
+      userInfo:e.detail.userInfo,
+      hasUserInfo: true
+    })
     wx.login({
       success: async res => {
-        var userInfo = e.detail.userInfo
-        that.setData({
-          userInfo,
-          hasUserInfo: true
-        })
+        //获取openid
         var res = await wx.cloud.callFunction({ name: 'getOpenid' })
-        openid = res.result.openid
+        app.globalData.openid = res.result.openid
+        wx.setStorageSync('openid', res.result.openid)
+        //连接集合查询是否存在此openid
         const userCollection = wx.cloud.database('treehole').collection('user')
         const allUser = (await userCollection.get()).data
-        const [user] = allUser.filter(v => v._openid === openid)
-        console.log(user)
+        const [user] = allUser.filter(v => v._openid === app.globalData.openid)
+        //若不存在则将数据存入集合
         if (!user) {
           userCollection.add({
             data: {
@@ -35,8 +39,10 @@ Page({
               console.log(res)
             }
           })
-        }else{
+        } else {
           console.log("已有用户")
+          console.log('userInfo:' + app.globalData.userInfo.nickName)
+          console.log('openid:' + app.globalData.openid)
         }
       }
     })
@@ -55,24 +61,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let that = this
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          wx.getUserInfo({
-            success: res => {
-              const userInfo = res.userInfo
-              that.setData({
-                userInfo,
-                hasUserInfo: true
-              })
-            }
-          })
-        } else {
-
-        }
+    var that = this
+    if (app.globalData.userInfo) {
+      this.setData({
+        hasUserInfo: true,
+        userInfo: app.globalData.userInfo
+      })
+    }else if(1){
+      app.userInfoReadyCallback=res=>{
+        that.setData({
+          userInfo:res.userInfo,
+          hasUserInfo:true
+        })
       }
-    })
+    }
   },
 
   /**
