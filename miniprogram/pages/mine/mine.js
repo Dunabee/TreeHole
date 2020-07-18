@@ -5,20 +5,47 @@ Page({
    * 页面的初始数据
    */
   data: {
-    hasUserInfo:false
+    hasUserInfo: false
   },
-
-  getUserInfo(info) {
-    const userInfo = info.detail.userInfo
-    this.setData({
-      userInfo,
-      hasUserInfo: true
+  
+  getUserInfo(e) {
+    var that = this
+    var openid
+    wx.login({
+      success: async res => {
+        var userInfo = e.detail.userInfo
+        that.setData({
+          userInfo,
+          hasUserInfo: true
+        })
+        var res = await wx.cloud.callFunction({ name: 'getOpenid' })
+        openid = res.result.openid
+        const userCollection = wx.cloud.database('treehole').collection('user')
+        const allUser = (await userCollection.get()).data
+        const [user] = allUser.filter(v => v._openid === openid)
+        console.log(user)
+        if (!user) {
+          userCollection.add({
+            data: {
+              nickName: userInfo.nickName,
+              gender: userInfo.gender,
+              avatarUrl: userInfo.avatarUrl
+            },
+            success: res => {
+              console.log(res)
+            }
+          })
+        }else{
+          console.log("已有用户")
+        }
+      }
     })
   },
 
-  loadInfo(){
-    if(this.data.hasUserInfo){
+  loadInfo() {
+    if (this.data.hasUserInfo) {
       wx.navigateTo({
+        //url: '/pages/mine/info/info?_id'+_id 
         url: '/pages/mine/info/info',
       })
     }
@@ -30,10 +57,10 @@ Page({
   onLoad: function (options) {
     let that = this
     wx.getSetting({
-      success(res) {
+      success: res => {
         if (res.authSetting['scope.userInfo']) {
           wx.getUserInfo({
-            success(res) {
+            success: res => {
               const userInfo = res.userInfo
               that.setData({
                 userInfo,
@@ -41,6 +68,8 @@ Page({
               })
             }
           })
+        } else {
+
         }
       }
     })
