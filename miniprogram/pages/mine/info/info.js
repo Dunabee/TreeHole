@@ -1,18 +1,40 @@
 // miniprogram/pages/mine/info/info.js
+var app = getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    sex: [' ','男', '女'],
+    index_picker_choose:0
+  },
 
+  bindPickChange(e){
+    /*this.setData({
+      index_picker_choose:e.detail.value
+    })*/
+    var that=this
+    const userCollection=wx.cloud.database('treehole').collection('user')
+    userCollection.doc(app.globalData.openid).update({
+      data:{
+        gender: that.data.index_picker_choose
+      },
+      success:res=>{
+        console.log(res)
+      }
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      userInfo: app.globalData.userInfo,
+      index_picker_choose:app.globalData.userInfo.gender
+    })
   },
 
   /**

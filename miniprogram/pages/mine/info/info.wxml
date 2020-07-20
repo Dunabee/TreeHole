@@ -1,2 +1,12 @@
 <!--miniprogram/pages/mine/info/info.wxml-->
-<text>用户详细信息</text>
+<view class="container">
+	<info-cell title="头像">
+		<image class="avatar" src="{{userInfo.avatarUrl}}"></image>
+	</info-cell>
+	<info-cell title="昵称">
+		<input class="input" value="{{userInfo.nickName}}"></input>
+	</info-cell>
+	<info-cell title="性别">
+		<picker range="{{sex}}" value="{{index_picker_choose}}" bindchange="bindPickChange">{{sex[index_picker_choose]}}</picker>
+	</info-cell>
+</view>
