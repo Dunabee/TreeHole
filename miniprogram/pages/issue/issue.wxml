@@ -1,12 +1,20 @@
 <!--miniprogram/pages/issue/issue.wxml-->
 <view class="container">
-		<view class="page-section page-section-spacing">
-			<textarea class="textarea" placeholder="请输入..."></textarea>
+	<view class="page-section page-section-spacing">
+		<textarea class="textarea" placeholder="请输入..." bindinput="bindInput" value="{{issue}}"></textarea>
+	</view>
+	<view class="page-section">
+		<view class="uploader-cell">
+			<!--展示图片-->
+			<view class="uploader-item" wx:for="{{uploaderImgList}}" wx:key="index">
+				<icon class="uploader-item-icon" bindtap="clearImg" data-index="{{index}}" type="clear" size="20" color="red" />
+				<image bindtap="showImg" data-index="{{index}}" src="{{item}}"></image>
+			</view>
+			<!--添加图片-->
+			<view class="uploader" bindtap="upload" wx:if="{{showUploader}}"></view>
 		</view>
-		<view class="page-section">
-			<uploader></uploader>
-		</view>
-		<view class="page-section">
-			<button>发布</button>
-		</view>
+	</view>
+	<view class="page-section">
+		<button type="primary" bindtap="uploadArticle">发布</button>
+	</view>
 </view>
