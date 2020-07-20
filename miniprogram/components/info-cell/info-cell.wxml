@@ -1,0 +1,10 @@
+<!--components/info-cell/info-cell.wxml-->
+<view class="cell">
+	<view class="cell_title">
+		<view class="title">{{title}}</view>
+	</view>
+	<view class="footer">
+		<!--<slot name="test"></slot>-->
+		<slot />
+	</view>
+</view>

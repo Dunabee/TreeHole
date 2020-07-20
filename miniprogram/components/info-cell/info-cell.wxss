@@ -1,0 +1,59 @@
+/* components/info-cell/info-cell.wxss */
+.cell {
+  padding: 16px;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.cell:before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 1px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.1);
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  left: 16px;
+  z-index: 2;
+}
+
+.cell:first-child:before {
+  display: none;
+}
+
+.title {
+  display: block;
+  width: 105px;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.footer{
+  padding-right: 15px;
+  position: relative;
+}
+.footer:after {
+  content: " ";
+  display: inline-block;
+  height: 9px;
+  width: 9px;
+  border-width: 1px 1px 0 0;
+  border-color: rgba(0, 0, 0, .3);
+  border-style: solid;
+  transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+  position: absolute;
+  top: 50%;
+  margin-top: -4px;
+  right: 1px;
+}
