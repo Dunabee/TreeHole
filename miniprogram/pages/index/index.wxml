@@ -2,7 +2,7 @@
 <view class="container">
 	<view class="page-body">
 		<view class="page-section page-section-spacing">
-			<article-list />
+			<article-list articleList="{{articleList}}" />
 		</view>
 	</view>
 </view>

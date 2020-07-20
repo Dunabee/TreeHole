@@ -29,7 +29,7 @@
 					<view class="navigator-text">我发布的</view>
 					<view class="navigator-arrow"></view>
 				</navigator>
-				<navigator class="navigator">
+				<navigator class="navigator" url="/pages/mine/about/about">
 					<view class="navigator-text">关于</view>
 					<view class="navigator-arrow"></view>
 				</navigator>
