@@ -7,14 +7,15 @@ Page({
    * 页面的初始数据
    */
   data: {
+    userInfo: [],
     hasUserInfo: false
   },
 
   getUserInfo(e) {
-    console.log(e.detail.userInfo)
+    var that = this
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
-      userInfo:e.detail.userInfo,
+      userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
     wx.login({
@@ -31,18 +32,18 @@ Page({
         if (!user) {
           userCollection.add({
             data: {
-              nickName: userInfo.nickName,
-              gender: userInfo.gender,
-              avatarUrl: userInfo.avatarUrl
+              nickName: that.data.userInfo.nickName,
+              gender: that.data.userInfo.gender,
+              avatarUrl: that.data.userInfo.avatarUrl
             },
             success: res => {
-              console.log(res)
+              console.log("授权成功")
+              wx.setStorageSync('userid', res._id)
             }
-          })
+          });
         } else {
-          console.log("已有用户")
-          console.log('userInfo:' + app.globalData.userInfo.nickName)
-          console.log('openid:' + app.globalData.openid)
+          wx.setStorageSync('userid', user._id)
+          app.globalData.userInfo = user
         }
       }
     })
@@ -67,11 +68,11 @@ Page({
         hasUserInfo: true,
         userInfo: app.globalData.userInfo
       })
-    }else if(1){
-      app.userInfoReadyCallback=res=>{
+    } else if (1) {
+      app.userInfoReadyCallback = res => {
         that.setData({
-          userInfo:res.userInfo,
-          hasUserInfo:true
+          userInfo: res.userInfo,
+          hasUserInfo: true
         })
       }
     }

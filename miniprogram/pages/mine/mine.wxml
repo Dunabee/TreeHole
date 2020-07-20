@@ -12,7 +12,7 @@
 					<image class="userinfo-avatar" src="{{userInfo.avatarUrl}}"></image>
 					<view class="userinfo">
 						<view class="userinfo-NickName">
-							<open-data type="userNickName"></open-data>
+						<text>{{userInfo.nickName}}</text>
 						</view>
 						<view class="userinfo-otherinfo">
 							<open-data type="userCity" lang="zh_CN"></open-data>
