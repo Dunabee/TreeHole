@@ -1,10 +1,4 @@
 <!--components/uploader/uploader.wxml-->
-<!--
-<view class="cell">
-	<view class="cell-body">图片上传</view>
-	<view class="cell-foot">{{uploaderNum}}/9</view>
-</view>
--->
 <view class="uploader-cell">
 	<!--展示图片-->
 	<view class="uploader-item" wx:for="{{uploaderList}}" wx:key="{{index}}">

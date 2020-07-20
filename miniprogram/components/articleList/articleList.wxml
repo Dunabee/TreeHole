@@ -1,11 +1,13 @@
 <!--components/picture-card/picture-card.wxml-->
-<view wx:for="{{articleList}}" wx:key="index">
-	<navigator url="" class="block m-t-sm center" style="background:#fff">
-		<text class="article-list-author block">{{item.author}}</text>
-		<view wx:if="{{item.pic_url}}" class="arcitle-list-img">
-			<image src="{{item.pic_url}}"></image>
+<view wx:for="{{articleList}}" wx:for-item="article" wx:key="index" class="block m-t-sm center" style="background:#fff">
+	<!--<navigator url="" class="block m-t-sm center" style="background:#fff">-->
+	<text class="article-list-author block">{{article.author}}</text>
+	<view wx:for="{{article.pic_url}}" wx:for-item="pic_url">
+		<view wx:if="{{pic_url}}" wx:for-index="i" class="arcitle-list-img">
+			<image src="{{pic_url}}" mode="aspectFit"></image>
 		</view>
-		<text class="article-list-issue block">{{item.issue}}</text>
-		<text class="article-list-time block">{{item.postdate}}</text>
-	</navigator>
+	</view>
+	<text class="article-list-issue block">{{article.issue}}</text>
+	<text class="article-list-time block">{{article.postdate}}</text>
+	<!--</navigator>-->
 </view>

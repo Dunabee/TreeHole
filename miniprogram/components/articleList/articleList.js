@@ -6,17 +6,7 @@ Component({
   properties: {
     articleList:{
       type:Array,
-      value:[{
-        author:'dunabe',
-        issue:'没让你毁灭的，只会让你更加强大！',
-        pic_url:'../../images/default_avatar.jpg',
-        postdate:'2020-07-15'
-      },
-      {
-        author:'lhz',
-        issue:'test',
-        postdate:'2020-07-16'
-      }]
+      value:[]
     }
   },
 

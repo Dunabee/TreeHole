@@ -28,13 +28,6 @@
   background-color: #f7f7f7;
   padding-bottom: 60%;
 }
-.article-list-img image {
-  position: absolute;
-  left: 0;
-  top: 0;
-  display: block;
-  width: 100%;
-}
 .article-list-issue{
   margin-bottom: 20rpx;
 }
