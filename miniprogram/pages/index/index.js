@@ -5,14 +5,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    articleList:[]
+    articleList: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+
   },
 
   /**
@@ -25,9 +25,10 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow:async function () {
+  onShow: async function () {
     const articleListCollection=wx.cloud.database('treehole').collection('articleList')
     const allArticle=(await articleListCollection.orderBy('postdate','desc').get()).data
+    console.log(allArticle)
     this.setData({
       articleList:allArticle,
     })
