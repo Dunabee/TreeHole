@@ -1,8 +1,9 @@
 {
   "pages": [
+    
+    "pages/index/index",
     "pages/issue/issue",
     "pages/mine/mine",
-    "pages/index/index",
     "pages/mine/mine-issue/mine-issue",
     "pages/mine/info/info",
     "pages/mine/about/about"
@@ -35,5 +36,8 @@
     ]
   },
   "sitemapLocation": "sitemap.json",
-  "style": "v2"
+  "style": "v2",
+  "useExtendedLib": {
+    "weui": true
+  }
 }
