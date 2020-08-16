@@ -15,22 +15,29 @@ Page({
   },
 
   clearImg(e) {
-    var nowList = [];
-    var uploaderImgList = this.data.uploaderImgList;
+    var nowList = [],
+      nowCloudUrl = [];
+    var uploaderImgList = this.data.uploaderImgList,
+      cloudImgUrl = this.data.cloudImgUrl;
     for (let i = 0; i < uploaderImgList.length; i++) {
       if (i == e.currentTarget.dataset.index) {
         continue
       } else {
         nowList.push(uploaderImgList[i])
+        nowCloudUrl.push(cloudImgUrl[i])
       }
     }
     this.setData({
       uploaderImgList: nowList,
+      cloudImgUrl:nowCloudUrl,
       uploaderImgNum: this.data.uploaderImgNum - 1,
       showUploader: true
     })
-    console.log(this.data.uploaderImgList)
+    console.log("List:"+this.data.uploaderImgList)
+    console.log("cloud:"+this.data.cloudImgUrl)
   },
+
+  /*预览图片 */
   showImg(e) {
     var that = this;
     wx.previewImage({
@@ -38,7 +45,8 @@ Page({
       current: that.data.uploaderImgList[e.currentTarget.dataset.index]
     })
   },
-  upload(e) {
+
+  addPic(e) {
     var that = this;
     wx.chooseImage({
       count: 9 - that.data.uploaderImgNum,
@@ -60,26 +68,28 @@ Page({
         wx.showLoading({
           title: '上传中',
         })
-        const cloudImgUrl = []
-        tempFilePath.forEach((item, i) => {
-          cloudImgUrl.push((new Date()).getTime() + Math.floor(10 * Math.random()) + tempFilePath[i].match(/\.[^.]+?$/)[0])
+        let cloudImgUrl = []
+        uploaderImgList.forEach((item, i) => {
+          cloudImgUrl.push((new Date()).getTime() + Math.floor(10 * Math.random()) + uploaderImgList[i].match(/\.[^.]+?$/)[0])
         })
         console.log('cloudImgUrl:' + cloudImgUrl)
-        tempFilePath.forEach((item, i) => {
+        console.log("uploaderImgList" + uploaderImgList)
+        uploaderImgList.forEach((item, i) => {
           wx.cloud.uploadFile({
             cloudPath: cloudImgUrl[i],
-            filePath: tempFilePath[i],
+            filePath: uploaderImgList[i],
             success: res => {
-              console.log(res.fileID)
-              let cloudImgUrl= that.data.cloudImgUrl.concat(res.fileID)
+              console.log("success" + res.fileID);
+              let cloudImgUrl = that.data.cloudImgUrl.concat(res.fileID);
+              console.log('cloudImgUrl11:' + cloudImgUrl);
               that.setData({
-                cloudImgUrl:cloudImgUrl
-              })
-              wx.hideLoading()
+                cloudImgUrl: cloudImgUrl
+              });
+              wx.hideLoading();
             },
             fail: res => {
-              wx.hideLoading()
-              console.log(res)
+              wx.hideLoading();
+              console.log(res);
             }
           })
         })
@@ -88,6 +98,7 @@ Page({
   },
 
   uploadArticle() {
+    var that = this
     if (this.data.issue == '') {
       wx.showToast({
         title: '请输入内容',
@@ -130,19 +141,19 @@ Page({
     })
   },
 
-  formatTime:function(date){
-    var year=date.getFullYear()
-    var month=date.getMonth()+1
-    var day=date.getDate()
-    var hour=date.getHours()
-    var minute=date.getMinutes()
-    var second=date.getSeconds()
-    return[year,month,day].map(this.formatNumber).join('/')+' '+[hour,minute,second].map(this.formatNumber).join(':')
+  formatTime: function (date) {
+    var year = date.getFullYear()
+    var month = date.getMonth() + 1
+    var day = date.getDate()
+    var hour = date.getHours()
+    var minute = date.getMinutes()
+    var second = date.getSeconds()
+    return [year, month, day].map(this.formatNumber).join('/') + ' ' + [hour, minute, second].map(this.formatNumber).join(':')
   },
 
-  formatNumber:function(n){
-    n=n.toString()
-    return n[1]?n:'0'+n
+  formatNumber: function (n) {
+    n = n.toString()
+    return n[1] ? n : '0' + n
   },
 
   /**

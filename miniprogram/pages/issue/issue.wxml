@@ -11,7 +11,7 @@
 				<image bindtap="showImg" data-index="{{index}}" src="{{item}}"></image>
 			</view>
 			<!--添加图片-->
-			<view class="uploader" bindtap="upload" wx:if="{{showUploader}}"></view>
+			<view class="uploader" bindtap="addPic" wx:if="{{showUploader}}"></view>
 		</view>
 	</view>
 	<view class="page-section">
