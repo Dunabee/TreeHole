@@ -1,36 +1,29 @@
 <!--components/picture-card/picture-card.wxml-->
-<view wx:for="{{articleList}}" wx:for-item="article" wx:key="index" class="block m-t-sm center" style="background:#fff;border-radius:5%">
+<view wx:for="{{articleList}}" wx:for-item="article" wx:key="index" class="block m-t-sm" style="background:#fff;padding-bottom:20rpx">
 	<!--<navigator url="" class="block m-t-sm center" style="background:#fff">-->
-	<text class="article-list-author block">{{article.author}}</text>
+	<view class="userinfo-section">
+		<view class="m-t-sm m-l-sm">
+			<image class="article-list-author-avatar" src="../../images/default_avatar.jpg"></image>
+		</view>
+		<view class="m-t-sm m-l-sm">
+			<text class="article-list-author block m-t-sm">{{article.author}}</text>
+			<text class="article-list-postdate block m-t-sm">{{article.postdate}}</text>
+		</view>
+	</view>
 
-		<swiper wx:if="{{article.pic_url.length!=0}}" indicator-dots="true" style="height:280px;margin-top:5px">
-			<block wx:for="{{article.pic_url}}" wx:for-item="pic_url">
+	<view class="issue-section">
+		<text class="article-list-issue">{{article.issue}}</text>
+	</view>
+
+	<view wx:if="{{article.pic_url.length!=0}}" style="text-align:center">
+		<swiper class="image-section">
+			<block wx:for="{{article.pic_url}}" wx:for-item="pic_url" wx:key="{{index}}">
 				<swiper-item>
-					<image src="{{pic_url}}" mode="aspectFit"></image>
+						<image src="{{pic_url}}" bingload="imageLoad" data-index="{{index}}" mode="aspectFit" style="width:100%;height:100%"></image>
 				</swiper-item>
 			</block>
 		</swiper>
-
-	<!--
-<view wx:for="{{[0,1,2]}}" wx:for-item="i">
-    <view style="flex-direction:row;display:flex;justify-content:center">
-      <view wx:for="{{article.pic_url}}" wx:for-item="pic_url" wx:for-index="index">
-        <view wx:if="{{index>=i*3 && index<3*(i+1)}}" class="flex-item">
-          <image src="{{pic_url}}" style="height:230rpx;width:230rpx;margin-right:5rpx"></image>
-        </view>
-      </view>
-    </view>
-  </view>
-	-->
-
-	<!--
-		<view wx:for="{{article.pic_url}}" wx:for-item="pic_url">
-		<view wx:if="{{pic_url}}" wx:for-index="i" class="arcitle-list-img">
-			<image src="{{pic_url}}" mode="aspectFit"></image>
-		</view>
 	</view>
-	-->
-	<text class="article-list-issue block">{{article.issue}}</text>
-	<text class="article-list-time block">{{article.postdate}}</text>
+
 	<!--</navigator>-->
 </view>
