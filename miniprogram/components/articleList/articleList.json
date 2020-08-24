@@ -1,4 +1,11 @@
 {
   "component": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "picture-area-1":"../pictureArea/pictureArea1/pictureArea1",
+    "picture-area-2":"../pictureArea/pictureArea2/pictureArea2",
+    "picture-area-3":"../pictureArea/pictureArea3/pictureArea3",
+    "picture-area-4":"../pictureArea/pictureArea4/pictureArea4",
+    "picture-area-5":"../pictureArea/pictureArea5/pictureArea5",
+    "picture-area-6":"../pictureArea/pictureArea6/pictureArea6"
+  }
 }

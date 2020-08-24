@@ -15,15 +15,37 @@
 		<text class="article-list-issue">{{article.issue}}</text>
 	</view>
 
+	<view wx:if="{{article.pic_url.length!=0}}">
+		<view wx:if="{{article.pic_url.length==1}}">
+			<picture-area-1 pictureList="{{article.pic_url}}" />
+		</view>
+		<view wx:elif="{{article.pic_url.length==2}}">
+			<picture-area-2 pictureList="{{article.pic_url}}" />
+		</view>
+		<view wx:elif="{{article.pic_url.length==3}}">
+			<picture-area-3 pictureList="{{article.pic_url}}" />
+		</view>
+		<view wx:elif="{{article.pic_url.length==4}}">
+			<picture-area-4 pictureList="{{article.pic_url}}" />
+		</view>
+		<view wx:elif="{{article.pic_url.length>4&&article.pic_url.length<=6}}">
+			<picture-area-5 pictureList="{{article.pic_url}}" />
+		</view>
+		<view wx:elif="{{article.pic_url.length>6}}">
+			<picture-area-6 pictureList="{{article.pic_url}}" />
+		</view>
+	</view>
+	
+<!--
 	<view wx:if="{{article.pic_url.length!=0}}" style="text-align:center">
 		<swiper class="image-section">
 			<block wx:for="{{article.pic_url}}" wx:for-item="pic_url" wx:key="{{index}}">
 				<swiper-item>
-						<image src="{{pic_url}}" bingload="imageLoad" data-index="{{index}}" mode="aspectFit" style="width:100%;height:100%"></image>
+					<image src="{{pic_url}}" bingload="imageLoad" data-index="{{index}}" mode="aspectFit" style="width:100%;height:100%"></image>
 				</swiper-item>
 			</block>
 		</swiper>
 	</view>
-
+-->
 	<!--</navigator>-->
 </view>
