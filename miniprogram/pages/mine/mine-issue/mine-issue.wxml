@@ -1,4 +1,5 @@
 <!--miniprogram/pages/mine/mine-issue/mine-issue.wxml-->
-<view>
+<text>
 我发布的内容
-</view>
+根据当前用户的openid从数据库中获取相应的内容
+</text>

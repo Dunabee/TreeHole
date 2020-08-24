@@ -129,7 +129,7 @@ Page({
       },
       fail: err => {
         wx.showToast({
-          title: '发布失败！',
+          title: '发布失败！请检查是否未登录！',
         })
       }
     })
